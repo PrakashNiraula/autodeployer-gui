@@ -1,0 +1,98 @@
+:root {
+  --shell: #0f172a;
+  --nav: #1e293b;
+  --bg: #f1f5f9;
+  --dev: #0f766e;
+  --uat: #b45309;
+  --prod: #b91c1c;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: #0f172a;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: #64748b; }
+#root { min-height: 100vh; }
+
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+.top {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 16px; background: var(--shell); color: #f8fafc;
+}
+.top-right { display: flex; gap: 12px; align-items: center; }
+.chip { padding: 4px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; background: var(--uat); color: #fff; }
+.chip.dev { background: var(--dev); }
+.chip.prod { background: var(--prod); }
+
+.shell { display: flex; flex: 1; min-height: 0; background: var(--bg); }
+.gnav {
+  width: 148px; background: var(--nav); padding: 12px; display: flex; flex-direction: column; gap: 4px;
+}
+.gnav button {
+  background: transparent; border: 0; color: #cbd5e1; text-align: left;
+  padding: 10px 12px; border-radius: 6px; cursor: pointer; font: inherit;
+}
+.gnav button.on, .gnav button:hover { background: #334155; color: #f8fafc; }
+
+main { flex: 1; padding: 16px; overflow: auto; }
+h2 { margin: 0 0 12px; }
+.meta { color: #64748b; font-size: 12px; }
+.btn {
+  border: 0; border-radius: 6px; padding: 8px 14px; margin-right: 8px;
+  background: var(--dev); color: #fff; font-weight: 600; cursor: pointer;
+}
+.btn.g { background: #334155; }
+.btn.bad { background: var(--prod); }
+.card-btn {
+  display: block; width: 100%; text-align: left; background: #fff;
+  border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin: 8px 0; cursor: pointer;
+}
+.empty { text-align: center; padding: 48px; color: #64748b; }
+.empty strong { display: block; color: #0f172a; margin-bottom: 8px; }
+
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+th { background: #f8fafc; color: #475569; }
+
+.badge { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+.badge.succeeded, .badge.ok { background: #ccfbf1; color: #0f766e; }
+.badge.skipped, .badge.warn { background: #ffedd5; color: #b45309; }
+.badge.failed, .badge.timeout, .badge.cancelled { background: #fee2e2; color: #b91c1c; }
+.badge.running, .badge.run { background: #dbeafe; color: #1d4ed8; }
+
+.banner { padding: 10px 12px; border-radius: 8px; margin-bottom: 12px; }
+.banner.bad { background: #fee2e2; color: #991b1b; }
+.banner.ok { background: #ccfbf1; color: #115e59; }
+
+.job-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+.link { background: none; border: 0; cursor: pointer; color: #0f766e; font: inherit; }
+.tabs { display: flex; gap: 4px; background: var(--nav); padding: 8px 8px 0; border-radius: 8px 8px 0 0; }
+.tabs button {
+  background: transparent; border: 0; color: #94a3b8; padding: 10px 14px;
+  border-radius: 6px 6px 0 0; cursor: pointer; font: inherit;
+}
+.tabs button.on { background: var(--shell); color: #f8fafc; font-weight: 600; }
+.card { background: #fff; border: 1px solid #e2e8f0; border-radius: 0 0 8px 8px; padding: 16px; }
+.files { display: flex; min-height: 320px; background: #fff; border-radius: 0 0 8px 8px; overflow: hidden; }
+.tree { width: 240px; background: #0f172a; padding: 8px; display: flex; flex-direction: column; gap: 2px; }
+.tree button {
+  background: transparent; border: 0; color: #cbd5e1; text-align: left;
+  font: 12px/1.5 ui-monospace, monospace; padding: 4px 8px; border-radius: 4px; cursor: pointer;
+}
+.tree button.sel, .tree button:hover { background: #334155; color: #fff; }
+.code, .log, .kv {
+  flex: 1; margin: 0; background: #0f172a; color: #e2e8f0;
+  font: 12px/1.5 ui-monospace, monospace; padding: 14px; overflow: auto; min-height: 220px;
+  white-space: pre-wrap;
+}
+.split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 12px; }
+@media (max-width: 900px) { .split, .files { grid-template-columns: 1fr; flex-direction: column; } }
+
+.modal-back {
+  position: fixed; inset: 0; background: rgba(15, 23, 42, 0.55);
+  display: flex; align-items: center; justify-content: center; padding: 24px; z-index: 20;
+}
+.modal { background: #fff; border-radius: 10px; padding: 20px; width: min(520px, 100%); }
+.modal input {
+  display: block; width: 100%; margin: 10px 0 16px; padding: 10px;
+  border: 2px solid var(--prod); border-radius: 6px; font: inherit;
+}
