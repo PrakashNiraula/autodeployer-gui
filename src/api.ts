@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API || "http://127.0.0.1:8787";
+const BASE = import.meta.env.VITE_API || ""; // same-origin; Vite proxies /api → bridge
 
 export type CliResult<T = unknown> = {
   ok: boolean;
